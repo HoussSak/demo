@@ -1,53 +1,64 @@
 package com.udemy.demo.book;
 
-import com.udemy.demo.user.User;
+import com.udemy.demo.user.UserInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @NotBlank
     private String title;
-    private BookStatus bookStatus;
 
-    @ManyToOne
-    private User user;
     @ManyToOne
     private Category category;
 
+    @ManyToOne
+    private UserInfo user;
+
+    private BookStatus status;
 
     @Transient
     private int categoryId;
 
     private boolean deleted;
 
-    public boolean isDeleted() {
-        return deleted;
+
+    public int getId() {
+        return id;
     }
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public BookStatus getBookStatus() {
-        return bookStatus;
+    public BookStatus getStatus() {
+        return status;
     }
 
-    public void setBookStatus(BookStatus bookStatus) {
-        this.bookStatus = bookStatus;
+    public void setStatus(BookStatus status) {
+        this.status = status;
     }
 
-    public Book(String title, Category category) {
-        this.title = title;
-        this.category = category;
+    public UserInfo getUser() {
+        return user;
     }
 
-    public Book() {
+    public void setUser(UserInfo user) {
+        this.user = user;
+    }
 
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {
@@ -65,29 +76,13 @@ public class Book {
     public void setCategory(Category category) {
         this.category = category;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public boolean isDeleted() {
+        return deleted;
     }
 
-    @Id
-    public int getId() {
-        return id;
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
 }

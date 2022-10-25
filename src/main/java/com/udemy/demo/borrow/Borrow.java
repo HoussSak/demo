@@ -1,7 +1,7 @@
 package com.udemy.demo.borrow;
 
 import com.udemy.demo.book.Book;
-import com.udemy.demo.user.User;
+import com.udemy.demo.user.UserInfo;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,13 +12,10 @@ public class Borrow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-
     @ManyToOne
-    private User borrower;
+    private UserInfo borrower;
     @ManyToOne
-    private User lender;
-
+    private UserInfo lender;
     @ManyToOne
     private Book book;
     private LocalDate askDate;
@@ -40,19 +37,19 @@ public class Borrow {
         this.closeDate = closeDate;
     }
 
-    public User getBorrower() {
+    public UserInfo getBorrower() {
         return borrower;
     }
 
-    public void setBorrower(User borrower) {
+    public void setBorrower(UserInfo borrower) {
         this.borrower = borrower;
     }
 
-    public User getLender() {
+    public UserInfo getLender() {
         return lender;
     }
 
-    public void setLender(User lender) {
+    public void setLender(UserInfo lender) {
         this.lender = lender;
     }
 

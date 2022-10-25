@@ -7,40 +7,35 @@ import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
+public class UserInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Size(min = 2,max = 25,message = "le nom doit faire entre 2 et 25 caractères")
-    private String firstName;
-    @Size(min = 2,max = 25,message = "le prenom doit faire entre 2 et 25 caractères")
-    private String lastName;
+
     private String email;
+
+    @Size(min = 2, max = 25, message = "Firstname Entre 2 et 25 caracteres SVP")
+    private String lastName;
+
+    @Size(min = 2, max = 25, message = "Lastname Entre 2 et 25 caracteres SVP")
+    private String firstName;
+
     private String password;
 
-    public User(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public UserInfo() {
+    }
+
+    public UserInfo(String email) {
         this.email = email;
-
     }
 
-    public User(String email) {
-        this.email = email;
-
+    public int getId() {
+        return id;
     }
 
-    public User() {
-
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLastName() {
@@ -49,6 +44,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getEmail() {
@@ -61,14 +64,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setPassword(String password) {
